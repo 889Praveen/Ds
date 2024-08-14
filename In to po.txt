@@ -1,0 +1,121 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+#define MAX 100
+
+// Stack structure
+typedef struct {
+    int top;
+    char items[MAX];
+} Stack;
+
+// Function prototypes
+void initStack(Stack *s);
+int isEmpty(Stack s);
+void push(Stack *s, char item);
+char pop(Stack *s);
+char peek(Stack s);
+int precedence(char op);
+void infixToPostfix(char infix[], char postfix[]);
+
+int main() {
+    char infix[MAX], postfix[MAX];
+    Stack s;
+
+    printf("Enter an infix expression: ");
+    scanf("%s", infix);
+
+    infixToPostfix(infix, postfix);
+
+    printf("Infix expression: %s\n", infix);
+    printf("Postfix expression: %s\n", postfix);
+
+    return 0;
+}
+
+// Function to initialize the stack
+void initStack(Stack *s) {
+    s->top = -1;
+}
+
+// Function to check if the stack is empty
+int isEmpty(Stack s) {
+    return s.top == -1;
+}
+
+// Function to push an element to the stack
+void push(Stack *s, char item) {
+    if (s->top == (MAX - 1)) {
+        printf("Stack Overflow\n");
+        return;
+    }
+    s->items[++(s->top)] = item;
+}
+
+// Function to pop an element from the stack
+char pop(Stack *s) {
+    if (isEmpty(*s)) {
+        printf("Stack Underflow\n");
+        exit(1);
+    }
+    return s->items[(s->top)--];
+}
+
+// Function to peek at the top element of the stack
+char peek(Stack s) {
+    if (isEmpty(s)) {
+        return '\0';
+    }
+    return s.items[s.top];
+}
+
+// Function to get the precedence of operators
+int precedence(char op) {
+    switch (op) {
+        case '+':
+        case '-':
+            return 1;
+        case '*':
+        case '/':
+            return 2;
+        case '(':
+            return 0;
+    }
+    return -1;
+}
+
+// Function to convert infix expression to postfix expression
+void infixToPostfix(char infix[], char postfix[]) {
+    Stack s;
+    initStack(&s);
+    int i = 0, j = 0;
+    char token;
+
+    while ((token = infix[i++]) != '\0') {
+        if (isalnum(token)) {
+            postfix[j++] = token; // Add operands to the postfix expression
+        } else if (token == '(') {
+            push(&s, token); // Push '(' to stack
+        } else if (token == ')') {
+            // Pop until '(' is encountered
+            while (!isEmpty(s) && peek(s) != '(') {
+                postfix[j++] = pop(&s);
+            }
+            pop(&s); // Remove '(' from stack
+        } else {
+            // Operator encountered
+            while (!isEmpty(s) && precedence(peek(s)) >= precedence(token)) {
+                postfix[j++] = pop(&s);
+            }
+            push(&s, token);
+        }
+    }
+
+    // Pop remaining operators from the stack
+    while (!isEmpty(s)) {
+        postfix[j++] = pop(&s);
+    }
+
+    postfix[j] = '\0'; // Null-terminate the postfix expression
+}
