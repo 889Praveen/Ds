@@ -1,0 +1,19 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+
+
+int a=5,b=11,sum;
+sum=a+b;
+clrscr();
+
+printf("\"Hello\"\n");
+
+
+printf("Value of a is %d ",a);
+printf("\nSum of %d and %d is %d",a,b,sum);
+a=getch();
+printf("\nCha : %d ",a);
+getch();
+}

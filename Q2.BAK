@@ -23,7 +23,7 @@ void main()
 	   }
   }
  }
-
+}
 void push(int ch[],int *r,int ele)
 {
   if(ch[]>=60)

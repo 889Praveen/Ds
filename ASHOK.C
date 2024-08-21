@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+int a=10,b=9;
+float c=10.5,d=20.9;
+clrscr();
+printf("%d\n",++a);
+printf("%d\n",--b);
+printf("%d\n",++a);
+printf("%f\n",++c);
+printf("%f\n",--d);
+getch();
+
+
+
+
+
+
+}

@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<conio.h>
+
+void main()
+{
+int a=100;
+clrscr();
+if(a&1)
+{
+printf("No is odd");
+}
+else
+{
+printf("No is even");
+}
+getch();
+}

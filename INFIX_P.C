@@ -1,0 +1,36 @@
+char stack[30],top=-1;
+void i_p(char infix[50])
+{
+int i=0;
+ while(infix[i]!=";")
+ {
+   if(infix[i]=='+'||infix[i]=='-')
+    {
+     if(top==-1)
+     {
+     //push(infix[i]);
+     printf("infix push =%c",infix[i]);
+     }
+     else
+     {
+     printf("infix pop =%c",infix[i]);
+     printf("infix second push =%c",infix[i]);
+     push(infix[i]);
+     }
+    }
+    else
+    {
+     if(infix[i]>"a"&&infix[i]<"z")
+     {
+     priintf("%s",infix[i]);
+     }
+    }
+    i++;
+ }
+}
+void main()
+{
+clrscr();
+i_p(stack);
+getch();
+}

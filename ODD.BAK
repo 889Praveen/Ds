@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<conio.h>
+
+void main()
+{
+int i,n=10;
+clrscr();
+for(i=1;i<=n;i++)
+{
+   printf("%d ",i*2-1);
+   printf("\n");
+}
+getch();
+}

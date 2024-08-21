@@ -1,0 +1,15 @@
+#include<stdio.h>
+#include<conio.h>
+
+void main()
+{
+int i=1,n=5,sum=0;
+clrscr();
+while(i<=n)
+{
+ sum=sum+(i*2-1);
+ i++;
+}
+printf("%d",sum);
+getch();
+}
