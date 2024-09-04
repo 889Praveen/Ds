@@ -1,31 +1,58 @@
-#include<stdio.h>
 #include<conio.h>
+#include<string.h>
 
-struct student
-{
- int rno;
- char name[20];
- float m;
+struct Student {
+    int rollNumber;
+    char name[50];
+    float result;
 };
-void main()
-{
-struct student s[5];
-int i,j;
-clrscr();
-for(i=0;i<5;i++)
-{
- printf("No : ");
- scanf("%d",&s[i].rno);
- printf("\nName : ");
- scanf("%s",&s[i].name);
- printf("\nMarks : ");
- scanf("%f",&s[i].m);
+
+void sortStudentsByResult(struct Student students[], int n) {
+    struct Student temp;
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (students[j].result > students[j + 1].result) {
+
+                temp = students[j];
+                students[j] = students[j + 1];
+                students[j + 1] = temp;
+            }
+        }
+    }
 }
-for(j=0;j<5;j++)
-{
- printf("\nNo : %d ",s[j].rno);
- printf("\nName : %s ",s[j].name);
- printf("Marks : %f ",s[i].m);
-}
-getch();
+
+int main() {
+
+    struct Student students[10];
+
+    // Input data for each student
+    for (int i = 0; i < 10; i++) {
+        printf("Enter details for student %d\n", i + 1);
+        
+        printf("Roll Number: ");
+        scanf("%d", &students[i].rollNumber);
+        
+        printf("Name: ");
+        scanf("%s", students[i].name);  // Note: this won't handle spaces in names
+        
+        printf("Result: ");
+        scanf("%f", &students[i].result);
+        
+        printf("\n");
+    }
+
+    // Sort the students by their result
+    sortStudentsByResult(students, 10);
+
+    // Display the data for each student
+    printf("Details of 10 students (sorted by result):\n");
+    for (int i = 0; i < 10; i++) {
+        printf("Student %d\n", i + 1);
+        printf("Roll Number: %d\n", students[i].rollNumber);
+        printf("Name: %s\n", students[i].name);
+        printf("Result: %.2f\n", students[i].result);
+        printf("\n");
+    }
+
+    return 0;
 }

@@ -84,13 +84,13 @@ void main()
 	    break;
    case 3:  if(*ff1==-1)
 	    {
-	     re(rr1,ff1,"Citigen");
-	     dis(q1,rr1,ff1,"Citigen");
+	     re(q1,rr1,ff1,"Citigen");
+	     dis(rr1,ff1,"Citigen");
 	    }
 	    else
 	    {
-	     re(rr2,ff2,"Regular");
-	     dis(q2,rr2,ff2,"Regular");
+	     re(q2,rr2,ff2,"Regular");
+	     dis(rr2,ff2,"Regular");
 	    }
 	   break;
 	   }
