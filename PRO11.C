@@ -95,10 +95,11 @@ void main()
 
   while(1)
   {
-  printf("\nEnter 1 for insert..");
-  printf("\nEnter 2 for Exit..");
-  printf("\nEnter 3 for Display..");
-  printf("\nEnter 4 for Remove..");
+  printf("\nEnter 1 For Insert..");
+  printf("\nEnter 2 For Remove..");
+  printf("\nEnter 3 For Modify..");
+  printf("\nEnter 4 For Display..");
+  printf("\nEnter 5 Foe  Exit..");
   printf("\nEnter choice:");
   scanf("%d",&ch);
   switch(ch)
@@ -106,17 +107,17 @@ void main()
    case 1:
 	  head=insert(head);
 	  break;
-   case 2:
+   case 5:
 	  exit(0);
 	  break;
-   case 3:
+   case 4:
 	  dis(head);
 	  break;
-   case 4:
+   case 2:
 	  head=remo(head);
 	  dis(head);
 	  break;
-   case 5:
+   case 3:
 	  modify(head);
 	  break;
 
