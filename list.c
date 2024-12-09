@@ -22,10 +22,10 @@ struct node* insert(int values)
          curr=curr->next;
      }
      n->data=values;
-     n->next=curr;
      curr->next=n;
      
     }
+ 
 }
 void display()
 {
@@ -38,11 +38,12 @@ void display()
     }
     else
     {
-     while(curr->next != NULL)
+        printf("\nhello:");
+    do
      {
-         printf("%d",curr->data);
+         printf(" %d ",curr->data);
          curr=curr->next;
-     }
+     } while(curr!= NULL);
     }
 }
 void main()
